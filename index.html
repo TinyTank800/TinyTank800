@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tinytank800 — Indie Dev, Self-Taught, Still Learning</title>
+  <meta name="description" content="Personal site of tinytank800. Indie game developer, self-taught programmer, and creator finding the joy in building things again." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c8281e;
+      --red-dark: #9e1e15;
+      --red-light: #f5e8e7;
+      --ink: #1a1714;
+      --paper: #f6f1eb;
+      --surface: #eee8df;
+      --muted: #7a7060;
+      --rule: #c8bfaa;
+      --green: #2a6e3a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --red: #e04038;
+        --red-dark: #f07068;
+        --red-light: #2a1412;
+        --ink: #e8e2d6;
+        --paper: #181410;
+        --surface: #211d18;
+        --muted: #9a9080;
+        --rule: #3a342c;
+        --green: #5abf70;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      font-family: 'Syne', sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* DISCLAIMER BANNER */
+    .disclaimer {
+      background: var(--surface);
+      border: 1.5px solid var(--rule);
+      border-radius: 4px;
+      padding: 0.65rem 1rem;
+      margin-bottom: 2.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    .disclaimer strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2.5px solid var(--ink);
+      padding-bottom: 1.75rem;
+      margin-bottom: 2.75rem;
+    }
+
+    .handle {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 .red { color: var(--red); }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      max-width: 500px;
+      line-height: 1.65;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 3.25rem;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 0.975rem;
+      margin-bottom: 0.95rem;
+      line-height: 1.78;
+      font-weight: 400;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* CALLOUTS */
+    .callout {
+      border-left: 3px solid var(--red);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      background: var(--red-light);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout p {
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .callout.green {
+      border-left-color: var(--green);
+      background: color-mix(in srgb, var(--green) 9%, transparent);
+    }
+
+    /* QUOTE */
+    .quote-block {
+      border: 1.5px solid var(--rule);
+      border-left: 4px solid var(--red);
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+      border-radius: 0 6px 6px 0;
+      background: var(--surface);
+    }
+
+    .quote-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .quote-attr {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1.5px;
+      background: var(--rule);
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.45rem;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid var(--paper);
+      outline: 1.5px solid var(--red);
+    }
+
+    .tl-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 0.12em;
+      margin-bottom: 2px;
+    }
+
+    .tl-title {
+      font-weight: 700;
+      font-size: 0.97rem;
+      margin-bottom: 4px;
+    }
+
+    .tl-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* SKILLS */
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.6rem;
+    }
+
+    .skill-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10.5px;
+      padding: 5px 11px;
+      border: 1.5px solid var(--rule);
+      border-radius: 3px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      background: var(--surface);
+    }
+
+    /* GOALS LIST */
+    .goals-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .goals-list li {
+      display: flex;
+      gap: 12px;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.96rem;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    .goals-list li:last-child { border-bottom: none; }
+
+    .goals-list li::before {
+      content: '->';
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--red);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* TWO COL CARDS */
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .col-card {
+      border: 1.5px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem 1.1rem;
+      background: var(--surface);
+    }
+
+    .col-card-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.01em;
+    }
+
+    .col-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* AI BADGE */
+    .badge {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 3px 9px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+    }
+
+    .badge-red { background: var(--red); color: #fff; }
+    .badge-green { background: var(--green); color: #fff; }
+    .badge-muted { background: var(--surface); color: var(--muted); border: 1px solid var(--rule); }
+
+    /* FOOTER */
+    .footer-rule {
+      border: none;
+      border-top: 2px solid var(--ink);
+      margin: 3rem 0 1.5rem;
+    }
+
+    .footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+
+    .footer-links a:hover { opacity: 0.7; }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2.1rem; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer" role="note">
+      <strong>Site note:</strong> The layout and styling code for this page was AI generated. All written content, stories, and opinions are my own words. Web development is out of my wheel house and not my focus.
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+      <p class="handle">tinytank800 &middot; tinytank800.me</p>
+      <h1>Indie dev.<br><span class="red">Self-taught.</span><br>Still learning.</h1>
+      <p class="tagline">Programmer, game developer, and creator finding my way back to building things the right way, one line of code at a time.</p>
+    </header>
+
+    <!-- ORIGIN STORY -->
+    <section class="section">
+      <p class="section-label">Origin story</p>
+      <h2>It started with a headset and an Xbox</h2>
+      <p>Before I ever touched a keyboard with intent, my cousin handed me a headset while he was gaming on the original Xbox. He was in a chat with a friend and I could hear the voice through the speakers. Being a kid, looking at the screen and seeing a character looking at me, I genuinely thought the game itself was talking to me. That moment of pure wonder stuck.</p>
+      <p>Growing up on Halo 2, flash games like Storm the House and Happy Wheels, and stick-fight doodles in school notebooks, I was obsessed with games long before I could make them. I had pages full of arena layouts and platformer designs I could never actually play. The desire to build them never went away.</p>
+      <p>The real spark came watching that same cousin developing a mod on his laptop. I had no idea what any of it meant but the idea that you could create whatever you wanted completely rewired how I thought. From that point on, making games was not just a hobby. It was the plan.</p>
+    </section>
+
+    <!-- THE JOURNEY -->
+    <section class="section">
+      <p class="section-label">The journey</p>
+      <h2>15+ years of building things</h2>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <p class="tl-year">2011</p>
+          <p class="tl-title">Roblox, the very beginning</p>
+          <p class="tl-desc">Started with premade assets and genuinely bad "games," then found tycoon templates. Built and released small tycoons that got real players. My first taste of making something for other people to actually use.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-year">~2013 onwards</p>
+          <p class="tl-title">Learning to code for real</p>
+          <p class="tl-desc">Taught myself Lua to build custom tycoon systems from scratch. That kicked off a self-taught journey through Python, Java, C#, and whatever else each new project needed. No school, just building.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-year">~2016 onwards</p>
+          <p class="tl-title">The dive into engines</p>
+          <p class="tl-desc">Starting in Game Maker I built many projects that never saw the light of day. Had a ton of fun with them though. Prototypes and Unity creations that got close to something real but never crossed the finish line, which honestly is just how game dev goes. These taught me a huge amount about how game creation actually works and got ideas out of my head and onto a screen. My brain never stops coming up with ideas so having a way to prototype them was huge. Dabbled in most engines at some point. Unity and Godot have been the easiest to work with.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-year">~2018 onwards</p>
+          <p class="tl-title">Running a Minecraft server and YouTube</p>
+          <p class="tl-desc">Operated a community Minecraft server for 5 seasons. Created tutorials and dev videos on YouTube. Some of my favorite work I have ever done. Helping others get unstuck on things I had already figured out was genuinely rewarding. I also made many public plugins and private systems for those servers.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-year">2023 to 2025</p>
+          <p class="tl-title">The AI chapter</p>
+          <p class="tl-desc">AI was something that interested me as it just started coming to mainstream. I started using AI tools just to see what it could do or how I could learn from it. This led me to start using it in my code. I finished things quicker but stopped actually learning. Gradually went from using AI to assist to having AI do everything. Projects got done but the joy did not survive.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-year">2026 and on</p>
+          <p class="tl-title">The reset</p>
+          <p class="tl-desc">After losing the happiness and drive I once had I have now decided to rebuild from scratch the right way. Stepped back from AI-generated code for personal and public projects. Rediscovering what made this fun in the first place.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GAME DEV SECTION -->
+    <section class="section">
+      <p class="section-label">Game development</p>
+      <h2>Moving to Godot and scoping way down</h2>
+      <p>I have dabbled in pretty much every major game engine at some point. Unity and Godot have always been the easiest for me to work with. After Unity pulled some moves that did not sit right with a lot of developers including me, Godot became my clear choice going forward. It just feels right and the community around it is great.</p>
+      <p>My cousin has always been a massive inspiration for the game dev side of things. He has seen what I am capable of but I have fumbled it every time. One thing he said to me years ago has never left my head. I told him I wanted to make games and quit the 9 to 5 grind because those jobs bring me no joy and just add stress. He told me that games take time and that playing games takes away from making them. Then he asked me something that I still hear any time I stop developing and just go back to playing or pile yet another unfinished project onto the stack:</p>
+
+      <div class="quote-block">
+        <p class="quote-text">"Do you want to make games, or continue to just play games?"</p>
+        <p class="quote-attr">My cousin, a dev who saw potential I kept wasting</p>
+      </div>
+
+      <p>That quote rings in my ears constantly. Every unfinished project, every time I shelved something to go back to gaming, it comes right back. It pushes me more than anything else.</p>
+      <p>This time around I am starting in Godot and scoping way down. Just the most basic version of a game idea, then one feature at a time. Hopefully people find it interesting and I can keep updating things over time with input from others.</p>
+
+      <div class="callout green">
+        <p>If you are following along, I will be sharing updates on what I am building as I go. Smaller scope means actually finishing things. That is the goal this time.</p>
+      </div>
+    </section>
+
+    <!-- HONEST REFLECTION -->
+    <section class="section">
+      <p class="section-label">Honest reflection</p>
+      <h2>What AI took and what I am taking back</h2>
+      <p>I will be straight with you. I went from a self-taught developer who had built real skills over years to someone who let AI generate most of the work. Projects shipped fast. Weekends felt productive. But somewhere in that process I stopped growing and eventually stopped having fun.</p>
+
+      <div class="callout">
+        <p>I have gone back through all my past projects and added clear AI code warnings to anything I used AI to generate. If you are someone who cares about knowing what is human-made versus AI-assisted, I want to be upfront about that. You deserve to know. I am not proud of using it for everything but I want to take the steps to be upfront about my shortcomings.</p>
+      </div>
+
+      <p>The wake-up was gradual. Video after video of creators actually making things, a growing restlessness, and eventually a depression from losing the thing I loved most. I cut social media off my phone. I stopped the endless scroll. Cut out all the distractions and always negative noise. I started building with my own hands again.</p>
+      <p>It is slower. It is harder. It feels like being a beginner all over again because honestly, in a lot of ways I am. But the fun is coming back and that matters more than shipping speed ever did.</p>
+    </section>
+
+    <!-- PEOPLE -->
+    <section class="section">
+      <p class="section-label">The people behind it</p>
+      <h2>Who believed and who did not</h2>
+      <p>When I was coming up through learning Roblox and starting to figure out Unity, I would try to explain what I was doing to my parents. They were not really interested. That hurt more than I let on at the time because this stuff was everything to me. They never really understood gaming or the internet and saw it as a waste of time, something that would not lead anywhere real.</p>
+      <p>They pushed hard for college and a degree, which I understand now was just them trying to look out for me. But by my late high school years I knew that path was not mine. I struggled in school. I was never interested in what was being taught. My brain was always somewhere else, thinking about what I could build next instead of sitting through classes that meant nothing to me.</p>
+      <p>When I finally told them I wanted to be a game developer and actually make a living from it, the response was that it would not work. That I should just go to school and get a job in tech the normal way. That hit hard and honestly it stuck with me for years. It put a real limiter on my drive even when I did not realize it was doing that. I know they were just people trying their best to guide someone they did not fully understand yet. But it hurt.</p>
+      <p>What I am hoping for, and what keeps me going, is that one day they will see what I have been building and realize they underestimated what I was capable of. That there are other ways to make something of yourself that do not involve a degree or a 9 to 5 that drains everything out of you.</p>
+
+      <div class="callout green">
+        <p>My cousin was the constant through all of this. When my parents did not believe in it, he was always there to listen to my ideas, look at my work, and push me to keep going. He has been a bigger part of this journey than he probably knows.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">Josh, if you are reading this. Thank you from the bottom of my heart for making me who I am. I would not have it any other way. One day I am going to send you a link to a finished game and you are going to know you were a key part of getting me there.</p>
+        <p class="quote-attr">To the person who never stopped believing in it</p>
+      </div>
+    </section>
+
+    <!-- RIGHT NOW -->
+    <section class="section">
+      <p class="section-label">Right now</p>
+      <h2>What I am focused on</h2>
+      <div class="two-col">
+        <div class="col-card">
+          <p class="col-card-title">Game dev, no AI</p>
+          <p>Any game I am building or publishing is written by hand. No AI-generated code. Learning is the entire point and shortcuts defeat the purpose.</p>
+        </div>
+        <div class="col-card">
+          <p class="col-card-title">Relearning the craft</p>
+          <p>Revisiting languages and patterns I let go stale. Python, C#, Lua, GDScript. Rebuilding real understanding, not just outputs.</p>
+        </div>
+        <div class="col-card">
+          <p class="col-card-title">Godot, small scope</p>
+          <p>Starting with the most basic version of a game idea and adding one feature at a time. Finishing something beats having twenty half-built projects which I have but maybe one day it will lessen.</p>
+        </div>
+        <div class="col-card">
+          <p class="col-card-title">YouTube, eventually</p>
+          <p>Making tutorials was some of my best work. I want to get back to it and share what I learn as I actually learn it, not just the polished version.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <p class="section-label">Skills and tools</p>
+      <h2>Languages I have worked with</h2>
+      <div class="skill-grid">
+        <span class="skill-tag">Lua / Roblox</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">GDScript / Godot</span>
+        <span class="skill-tag">GML / GameMaker</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Minecraft plugins</span>
+        <span class="skill-tag">Discord bots</span>
+        <span class="skill-tag">Unity</span>
+      </div>
+      <div class="callout" style="margin-top: 1.25rem;">
+        <p>100% self-taught. No formal education in tech. Everything I know came from projects that needed something I did not know yet.</p>
+      </div>
+    </section>
+
+    <!-- GOALS -->
+    <section class="section">
+      <p class="section-label">Looking ahead</p>
+      <h2>Goals for this journey</h2>
+      <ul class="goals-list">
+        <li>Rebuild genuine programming skills from the ground up, no shortcuts</li>
+        <li>Actually finish and release a Godot game, however small it starts</li>
+        <li>Answer my cousin's question with action, not just intent</li>
+        <li>Revive the YouTube tutorials that helped people along the way</li>
+        <li>Document the struggle openly, the bad weeks as much as the wins</li>
+        <li>Build things people can actually play and enjoy</li>
+        <li>Prove to myself again that making things is its own reward</li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <hr class="footer-rule" />
+    <p class="footer-text">
+      If this resonates with you, or you just want to follow along, I would love to have you.
+      Links to projects, communities, and everything else below.<br>
+      Come say hi. I am building in public and the company is appreciated.
+    </p>
+    <div class="footer-links">
+      <a href="https://oksqd.com/">Projects</a>
+      <a href="https://www.youtube.com/@TinyTank800">Youtube: Main Channel</a>
+      <a href="https://www.youtube.com/@OkamiSquadron">Youtube: Tutorials Channel</a>
+      <a href="https://github.com/TinyTank800">GitHub</a>
+      <a href="https://discord.oksqd.com/">Discord</a>
+    </div>
+
+  </main>
+</body>
+</html>
